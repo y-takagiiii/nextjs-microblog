@@ -1,9 +1,10 @@
 import { Inter } from 'next/font/google'
-import Layout from '@/components/Layout'
+import Layout, { siteTitle } from '@/components/Layout'
 import utilstyles from "../styles/utils.module.css"
 import styles from "../styles/Home.module.css"
 import Link from 'next/link'
 import { getPostsData } from '@/lib/post'
+import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,7 +30,10 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData }) {
   return (
-    <Layout>
+    <Layout home>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
       <section className={utilstyles.headingMd}>
         <p>私は農業系エンジニアです。たまにTypeScript・Next.jsを使ってフロンドエンドのお仕事もします。</p>
       </section>

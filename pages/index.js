@@ -27,62 +27,22 @@ export default function Home({ allPostsData }) {
       <section>
       <h2>📝エンジニアのブログ</h2>
         <div className={styles.grid}>
-          <article>
-            <Link href="/">
-              <img
-                src="/images/thumbnail01.jpg"
-                alt=""
-                className={styles.thumbnailImage}
-              />
-            </Link>
-            <Link legacyBehavior href="/">
-              <a className={utilstyles.boldText}>SSGとSSRの使い分けの場面はいつなのか？</a>
-            </Link>
-            <br />
-            <small className={utilstyles.lightText}>October 15, 2023</small>
-          </article>
-          <article>
-            <Link href="/">
-              <img
-                src="/images/thumbnail01.jpg"
-                alt=""
-                className={styles.thumbnailImage}
-              />
-            </Link>
-            <Link legacyBehavior href="/">
-              <a className={utilstyles.boldText}>SSGとSSRの使い分けの場面はいつなのか？</a>
-            </Link>
-            <br />
-            <small className={utilstyles.lightText}>October 15, 2023</small>
-          </article>
-          <article>
-            <Link href="/">
-              <img
-                src="/images/thumbnail01.jpg"
-                alt=""
-                className={styles.thumbnailImage}
-              />
-            </Link>
-            <Link legacyBehavior href="/">
-              <a className={utilstyles.boldText}>SSGとSSRの使い分けの場面はいつなのか？</a>
-            </Link>
-            <br />
-            <small className={utilstyles.lightText}>October 15, 2023</small>
-          </article>
-          <article>
-            <Link href="/">
-              <img
-                src="/images/thumbnail01.jpg"
-                alt=""
-                className={styles.thumbnailImage}
-              />
-            </Link>
-            <Link legacyBehavior href="/">
-              <a className={utilstyles.boldText}>SSGとSSRの使い分けの場面はいつなのか？</a>
-            </Link>
-            <br />
-            <small className={utilstyles.lightText}>October 15, 2023</small>
-          </article>
+          {allPostsData.map(({ id, title, date, thumbnail }) => (
+            <article key={id}>
+              <Link href={`/posts/${id}`}>
+                <img
+                  src={`${thumbnail}`}
+                  alt=""
+                  className={styles.thumbnailImage}
+                />
+              </Link>
+              <Link legacyBehavior href={`/posts/${id}`}>
+                <a className={utilstyles.boldText}>{title}</a>
+              </Link>
+              <br />
+              <small className={utilstyles.lightText}>{date}</small>
+            </article>
+          ))}
         </div>
       </section>
     </Layout>
